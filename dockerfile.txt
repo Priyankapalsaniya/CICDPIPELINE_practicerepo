@@ -1,0 +1,28 @@
+FROM python:3.8-slim
+
+ENV MICRO_SERVICE=/home/app/webapp
+
+# Create directory
+RUN mkdir -p $MICRO_SERVICE
+
+# Set working directory
+WORKDIR $MICRO_SERVICE
+
+# Avoid writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install pip
+RUN pip install --upgrade pip
+
+# Copy project inside container
+COPY src/ $MICRO_SERVICE/
+
+# Install Python dependencies
+RUN pip install -r requirements.txt
+
+# Expose Streamlit default port
+EXPOSE 8501
+
+# Run Streamlit
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
