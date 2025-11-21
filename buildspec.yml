@@ -27,4 +27,5 @@ phases:
       - printenv
       - echo `pwd`
 
-      - bash $financial_app/build_and_push.sh $DOCKER_IMAGE_NAME
+      - bash $bash /build_and_push.sh $DOCKER_IMAGE_NAME
+
