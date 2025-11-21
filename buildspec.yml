@@ -27,5 +27,6 @@ phases:
       - printenv
       - echo `pwd`
 
-      - bash $bash /build_and_push.sh $DOCKER_IMAGE_NAME
+      - bash $build_and_push.sh $DOCKER_IMAGE_NAME
+
 
